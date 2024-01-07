@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { timesNow } from "./fonts";
+import { timesNow } from "../fonts";
 
 export const metadata: Metadata = {
   title: "Grande Avenida",
