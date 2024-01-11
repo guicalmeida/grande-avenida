@@ -64,9 +64,11 @@ export const timesNow = localFont({
       style: "normal",
     },
   ],
+  variable: '--font-timesNow',
 });
 
 export const azeret_mono = Azeret_Mono({
   subsets: ["latin"],
   display: "swap",
+  variable: "--font-azaretMono"
 });

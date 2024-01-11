@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "glider-js/glider.min.css";
 import "./globals.css";
-import { timesNow } from "../fonts";
+import { azeret_mono, timesNow } from "../fonts";
 
 export const metadata: Metadata = {
   title: "Grande Avenida",
@@ -14,8 +14,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={timesNow.className}>{children}</body>
+    <html lang="en"  className={`${timesNow.variable} ${azeret_mono.variable}`}>
+      <body className="font-timesNow">{children}</body>
     </html>
   );
 }
