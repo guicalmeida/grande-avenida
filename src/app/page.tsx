@@ -1,5 +1,5 @@
 import Header from "@/components/Header";
-import MainSlider from "@/components/MainSlider/MainSlider";
+import MainSlider from "@/components/MainSlider";
 import TextIntro from "@/components/TextIntro";
 
 export default function Home() {
