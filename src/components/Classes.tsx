@@ -10,18 +10,22 @@ export default function Classes() {
     {
       title: "Vídeo art e a era do conteúdo",
       img: slide1,
+      path: "/",
     },
     {
       title: "Trajetos da mente",
       img: slide1,
+      path: "/",
     },
     {
       title: "Título do curso",
       img: slide1,
+      path: "/",
     },
     {
       title: "Título do curso 2",
       img: slide1,
+      path: "/",
     },
   ];
   return (
@@ -38,7 +42,7 @@ export default function Classes() {
         </a>
       </div>
       <Glider
-        draggable
+        hasArrows
         hasDots
         dots="#dots"
         slidesToShow={2.5}
@@ -56,10 +60,15 @@ export default function Classes() {
                 alt="imagem"
               />
               <div className=" h-[100%] w-[100%] flex flex-col items-center justify-between">
-                <h3 className="font-timesNow text-[90px] leading-[80px] font-normal text-[#F8F8F8]">
-                  {slide.title}
-                </h3>
-                <a className="bg-white px-[30px] py-[20px] font-azeret font-medium uppercase text-sm border-solid border-2 border-black rounded-[100px]">
+                <a href={slide.path}>
+                  <h3 className="font-timesNow text-[90px] leading-[80px] font-normal text-[#F8F8F8]">
+                    {slide.title}
+                  </h3>
+                </a>
+                <a
+                  href={slide.path}
+                  className="bg-white px-[30px] py-[20px] font-azeret font-medium uppercase text-sm border-solid border-2 border-black rounded-[100px]"
+                >
                   <span>saiba mais</span>
                 </a>
               </div>
