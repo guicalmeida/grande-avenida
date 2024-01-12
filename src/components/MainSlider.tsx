@@ -1,11 +1,8 @@
 "use client";
 
 import Glider from "react-glider";
-import "glider-js/glider.min.css";
 import Image from "next/image";
-import slide1 from "../../../public/tmp/slide1.webp";
-import "./style.css";
-
+import slide1 from "../../public/tmp/slide1.webp";
 
 export default function MainSlider() {
   return (
