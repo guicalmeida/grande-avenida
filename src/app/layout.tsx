@@ -14,7 +14,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en"  className={`${timesNow.variable} ${azeret_mono.variable} bg-white`}>
+    <html
+      lang="en"
+      className={`${timesNow.variable} ${azeret_mono.variable} bg-white`}
+    >
       <body className="font-timesNow">{children}</body>
     </html>
   );
