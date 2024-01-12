@@ -4,7 +4,7 @@ import BigSlider, { SlideProps } from "@/components/BigSlider";
 import TextIntro from "@/components/TextIntro";
 import slide1 from "../../public/tmp/slide1.webp";
 import Gallery from "@/components/Gallery";
-import Blog, { PostProps } from "@/components/Blog";
+import Blog, { PostProps } from "@/components/Blog/Blog";
 
 const homeSlides: SlideProps[] = [
   {
