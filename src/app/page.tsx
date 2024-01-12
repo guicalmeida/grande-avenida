@@ -1,3 +1,4 @@
+import Classes from "@/components/Classes";
 import Header from "@/components/Header";
 import MainSlider from "@/components/MainSlider";
 import TextIntro from "@/components/TextIntro";
@@ -11,6 +12,9 @@ export default function Home() {
       </div>
       <div className="mt-11">
         <TextIntro />
+      </div>
+      <div className="mt-[200px]">
+        <Classes />
       </div>
     </main>
   );

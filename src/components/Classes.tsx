@@ -1,0 +1,72 @@
+"use client";
+
+import Glider from "react-glider";
+import slide1 from "../../public/tmp/slide1.webp";
+import classes_btn from "../../public/classes_btn.svg";
+import Image from "next/image";
+
+export default function Classes() {
+  const slides = [
+    {
+      title: "Vídeo art e a era do conteúdo",
+      img: slide1,
+    },
+    {
+      title: "Trajetos da mente",
+      img: slide1,
+    },
+    {
+      title: "Título do curso",
+      img: slide1,
+    },
+    {
+      title: "Título do curso 2",
+      img: slide1,
+    },
+  ];
+  return (
+    <>
+      <div className="flex justify-between mb-12 items-center">
+        <h2 className="font-timesNow text-[120px] font-normal leading-[120px] tracking-[-2.4px]">
+          Cursos
+        </h2>
+        <a href="/">
+          <Image
+            src={classes_btn}
+            alt="Explore nossos cursos atuais e futuros"
+          />
+        </a>
+      </div>
+      <Glider
+        draggable
+        hasDots
+        dots="#dots"
+        slidesToShow={2.5}
+        slidesToScroll={1}
+      >
+        {slides.map((slide) => {
+          return (
+            <div
+              key={slide.title}
+              className="!h-[600px] relative px-[100px] py-11 mr-5"
+            >
+              <Image
+                className="left-0 top-0 object-cover h-[100%] w-[100%] rounded-[60px] absolute -z-10 "
+                src={slide.img}
+                alt="imagem"
+              />
+              <div className=" h-[100%] w-[100%] flex flex-col items-center justify-between">
+                <h3 className="font-timesNow text-[90px] leading-[80px] font-normal text-[#F8F8F8]">
+                  {slide.title}
+                </h3>
+                <button className="bg-white px-[30px] py-[20px] font-azeret font-medium uppercase text-sm border-solid border-2 border-black rounded-[100px]">
+                  <span>saiba mais</span>
+                </button>
+              </div>
+            </div>
+          );
+        })}
+      </Glider>
+    </>
+  );
+}
