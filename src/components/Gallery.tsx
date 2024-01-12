@@ -32,7 +32,7 @@ export default function Gallery() {
         <a href="/">
           <Image
             src={gallery_btn}
-            alt="Explore nossos cursos atuais e futuros"
+            alt="O espaço e o que rola por lá!"
           />
         </a>
       </div>

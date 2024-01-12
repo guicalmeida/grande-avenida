@@ -59,9 +59,9 @@ export default function Classes() {
                 <h3 className="font-timesNow text-[90px] leading-[80px] font-normal text-[#F8F8F8]">
                   {slide.title}
                 </h3>
-                <button className="bg-white px-[30px] py-[20px] font-azeret font-medium uppercase text-sm border-solid border-2 border-black rounded-[100px]">
+                <a className="bg-white px-[30px] py-[20px] font-azeret font-medium uppercase text-sm border-solid border-2 border-black rounded-[100px]">
                   <span>saiba mais</span>
-                </button>
+                </a>
               </div>
             </div>
           );

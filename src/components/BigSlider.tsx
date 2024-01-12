@@ -2,7 +2,6 @@
 
 import Glider from "react-glider";
 import Image, { StaticImageData } from "next/image";
-import { GliderMethods } from "react-glider/dist/types";
 
 export type SlideProps = {
   title?: string;
