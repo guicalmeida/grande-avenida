@@ -61,7 +61,10 @@ export default function Classes() {
               />
               <div className=" h-[100%] w-[100%] flex flex-col items-center justify-between">
                 <a href={slide.path}>
-                  <h3 className="font-timesNow text-[90px] leading-[80px] font-normal text-[#F8F8F8]">
+                  <h3
+                    style={{ textShadow: "0px 0px 12px #000" }}
+                    className="font-timesNow text-[90px] leading-[80px] font-normal text-[#F8F8F8]"
+                  >
                     {slide.title}
                   </h3>
                 </a>
