@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "dayjs": "^1.11.10",
     "glider-js": "^1.7.8",
     "next": "14.0.4",
     "react": "^18",
