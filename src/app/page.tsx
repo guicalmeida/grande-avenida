@@ -1,4 +1,4 @@
-import Classes from "@/components/Classes";
+import Courses from "@/components/Courses";
 import Header from "@/components/Header";
 import BigSlider, { SlideProps } from "@/components/BigSlider";
 import TextIntro from "@/components/TextIntro";
@@ -107,7 +107,7 @@ export default function Home() {
         <TextIntro />
       </div>
       <div className="mt-[200px]">
-        <Classes />
+        <Courses />
       </div>
       <div className="mt-[170px]">
         <Gallery />

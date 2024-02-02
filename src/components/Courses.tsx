@@ -2,10 +2,10 @@
 
 import Glider from "react-glider";
 import slide1 from "../../public/tmp/slide1.webp";
-import classes_btn from "../../public/classes_btn.svg";
+import courses_btn from "../../public/courses_btn.svg";
 import Image from "next/image";
 
-export default function Classes() {
+export default function Courses() {
   const slides = [
     {
       title: "Vídeo art e a era do conteúdo",
@@ -36,7 +36,7 @@ export default function Classes() {
         </h2>
         <a href="/">
           <Image
-            src={classes_btn}
+            src={courses_btn}
             alt="Explore nossos cursos atuais e futuros"
           />
         </a>

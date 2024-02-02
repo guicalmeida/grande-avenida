@@ -1,7 +1,7 @@
 "use client";
 
 import dayjs from "dayjs";
-import classes_btn from "../../../public/classes_btn.svg";
+import courses_btn from "../../../public/courses_btn.svg";
 import slide1 from "../../../public/tmp/slide1.webp";
 import Image from "next/image";
 import "dayjs/locale/pt-br";
@@ -47,7 +47,7 @@ export default function Cursos() {
         </h1>
         <a href="/">
           <Image
-            src={classes_btn}
+            src={courses_btn}
             alt="Explore nossos cursos atuais e futuros"
           />
         </a>
