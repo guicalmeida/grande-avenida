@@ -1,3 +1,4 @@
+import Separator from "../Separator";
 import { PostProps } from "./Blog";
 import calculateReadingTime from "@/utils/getReadingTime";
 
@@ -5,10 +6,7 @@ export default function MobileBlog({ posts }: { posts: PostProps[] }) {
   return (
     <>
       <div>
-        <hr
-          role="separator"
-          className="border-dotted border-t-1 border-black"
-        />
+        <Separator />
 
         {posts.slice(0, 3).map((post) => {
           return (
@@ -30,10 +28,7 @@ export default function MobileBlog({ posts }: { posts: PostProps[] }) {
                   <span>Leitura: {calculateReadingTime(post.text)}</span>
                 </div>
               </div>
-              <hr
-                role="separator"
-                className="border-dotted border-t-1 border-black"
-              />
+              <Separator />
             </>
           );
         })}

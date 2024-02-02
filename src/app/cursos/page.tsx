@@ -8,10 +8,11 @@ import CourseHeader from "@/components/CourseHeader";
 import { coursesMock } from "@/mocks/courses.mock";
 import createSlug from "@/utils/createSlug";
 import { getNextCourseId } from "@/utils/getNextCourseId";
+import Separator from "@/components/Separator";
 dayjs.locale("pt-br");
 
 export default function Cursos() {
-  const nextCourseId = getNextCourseId(coursesMock)
+  const nextCourseId = getNextCourseId(coursesMock);
   return (
     <>
       <div className="flex justify-between mb-12 items-center">
@@ -25,7 +26,7 @@ export default function Cursos() {
           />
         </a>
       </div>
-      <hr role="separator" className="border-dotted border-t-1 border-black" />
+      <Separator />
       {coursesMock.map((slide, i) => {
         return (
           <>
@@ -50,12 +51,7 @@ export default function Cursos() {
                 height={slide.capa.height}
               />
             </div>
-            {i !== coursesMock.length - 1 && (
-              <hr
-                role="separator"
-                className="border-dotted border-t-1 border-black"
-              />
-            )}
+            {i !== coursesMock.length - 1 && <Separator />}
           </>
         );
       })}
