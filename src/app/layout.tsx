@@ -20,8 +20,10 @@ export default function RootLayout({
       className={`${timesNow.variable} ${azeret_mono.variable} bg-white`}
     >
       <body className="font-timesNow">
-        {children}
-        <Footer />
+        <main className="container mx-auto">
+          {children}
+        </main>
+          <Footer />
       </body>
     </html>
   );

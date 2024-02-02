@@ -37,7 +37,7 @@ const posts: PostProps[] = [
   {
     title: "A era de ouro das performances artísticas 1",
     coverUrl: slide1,
-    path: '/texto',
+    path: "/texto",
     author: "Arlindo Christiam",
     text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sagittis nisi sem, non dignissim nulla commodo nec. In commodo lectus vel odio sodales, vitae tristique sapien facilisis. Pellentesque eget mauris tellus. Sed sed ipsum in ante rhoncus cursus quis ut ipsum. Aliquam eget dignissim erat. Mauris molestie gravida blandit. Duis aliquet cursus ipsum. Praesent auctor nibh a varius dignissim. Sed consequat neque non quam rutrum pulvinar. Cras posuere enim eros, consectetur blandit libero condimentum non. Morbi malesuada sollicitudin lobortis. Aenean dignissim consectetur massa id venenatis. Praesent rhoncus massa sed tellus elementum tristique.
         
@@ -52,7 +52,7 @@ const posts: PostProps[] = [
   {
     title: "A era de ouro das performances artísticas 2",
     coverUrl: slide1,
-    path: '/texto',
+    path: "/texto",
     author: "Arlindo Christiam",
     text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sagittis nisi sem, non dignissim nulla commodo nec. In commodo lectus vel odio sodales, vitae tristique sapien facilisis. Pellentesque eget mauris tellus. Sed sed ipsum in ante rhoncus cursus quis ut ipsum. Aliquam eget dignissim erat. Mauris molestie gravida blandit. Duis aliquet cursus ipsum. Praesent auctor nibh a varius dignissim. Sed consequat neque non quam rutrum pulvinar. Cras posuere enim eros, consectetur blandit libero condimentum non. Morbi malesuada sollicitudin lobortis. Aenean dignissim consectetur massa id venenatis. Praesent rhoncus massa sed tellus elementum tristique.
         
@@ -67,7 +67,7 @@ const posts: PostProps[] = [
   {
     title: "A era de ouro das performances artísticas 3",
     coverUrl: slide1,
-    path: '/texto',
+    path: "/texto",
     author: "Arlindo Christiam",
     text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sagittis nisi sem, non dignissim nulla commodo nec. In commodo lectus vel odio sodales, vitae tristique sapien facilisis. Pellentesque eget mauris tellus. Sed sed ipsum in ante rhoncus cursus quis ut ipsum. Aliquam eget dignissim erat. Mauris molestie gravida blandit. Duis aliquet cursus ipsum. Praesent auctor nibh a varius dignissim. Sed consequat neque non quam rutrum pulvinar. Cras posuere enim eros, consectetur blandit libero condimentum non. Morbi malesuada sollicitudin lobortis. Aenean dignissim consectetur massa id venenatis. Praesent rhoncus massa sed tellus elementum tristique.
         
@@ -82,7 +82,7 @@ const posts: PostProps[] = [
   {
     title: "A era de ouro das performances artísticas",
     coverUrl: slide1,
-    path: '/texto',
+    path: "/texto",
     author: "Arlindo Christiam",
     text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sagittis nisi sem, non dignissim nulla commodo nec. In commodo lectus vel odio sodales, vitae tristique sapien facilisis. Pellentesque eget mauris tellus. Sed sed ipsum in ante rhoncus cursus quis ut ipsum. Aliquam eget dignissim erat. Mauris molestie gravida blandit. Duis aliquet cursus ipsum. Praesent auctor nibh a varius dignissim. Sed consequat neque non quam rutrum pulvinar. Cras posuere enim eros, consectetur blandit libero condimentum non. Morbi malesuada sollicitudin lobortis. Aenean dignissim consectetur massa id venenatis. Praesent rhoncus massa sed tellus elementum tristique.
         
@@ -98,7 +98,7 @@ const posts: PostProps[] = [
 
 export default function Home() {
   return (
-    <main className="container mx-auto">
+    <>
       <Header />
       <div className="mt-14">
         <BigSlider slides={homeSlides} />
@@ -115,6 +115,6 @@ export default function Home() {
       <div className="mt-[170px]">
         <Blog posts={posts} />
       </div>
-    </main>
+    </>
   );
 }

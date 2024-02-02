@@ -40,7 +40,7 @@ const slides = [
 
 export default function Cursos() {
   return (
-    <main className="container mx-auto">
+    <>
       <div className="flex justify-between mb-12 items-center">
         <h1 className="font-timesNow text-[120px] font-normal leading-[120px] tracking-[-2.4px]">
           Cursos
@@ -98,6 +98,6 @@ export default function Cursos() {
           </>
         );
       })}
-    </main>
+    </>
   );
 }
