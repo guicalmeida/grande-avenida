@@ -9,6 +9,7 @@ import { coursesMock } from "@/mocks/courses.mock";
 import createSlug from "@/utils/createSlug";
 import { getNextCourseId } from "@/utils/getNextCourseId";
 import Separator from "@/components/Separator";
+import LinkButton from "@/components/LinkButton";
 dayjs.locale("pt-br");
 
 export default function Cursos() {
@@ -36,12 +37,9 @@ export default function Cursos() {
                   course={slide}
                   isNextClass={nextCourseId === slide.id}
                 />
-                <a
-                  href={`cursos/${createSlug(slide.titulo)}`}
-                  className="bg-white px-[30px] py-[20px] font-azeret font-medium uppercase text-sm border-solid border-2 border-black rounded-[100px] w-[fit-content]"
-                >
-                  <span>saiba mais</span>
-                </a>
+                <LinkButton href={`cursos/${createSlug(slide.titulo)}`}>
+                  Saiba mais
+                </LinkButton>
               </div>
               <Image
                 className="object-cover max-h-[500px] h-[100%] max-w-[560px] rounded-[60px]"
