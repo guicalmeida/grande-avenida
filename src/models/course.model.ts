@@ -9,6 +9,13 @@ type Asset = {
   height: number;
 };
 
+export type Teacher = {
+  id: string;
+  nome: string;
+  sobre: RichText;
+  perfil: Asset;
+};
+
 export type Course = {
   capa: Asset;
   corpo: RichText;
@@ -16,12 +23,7 @@ export type Course = {
   formatoDaAula?: string;
   id: string;
   inicio: string;
-  professores: {
-    id: string;
-    nome: string;
-    sobre: RichText;
-    perfil: Asset;
-  };
+  professores: Teacher[];
   statusDeInscricao: boolean;
   titulo: string;
   valor?: string;
