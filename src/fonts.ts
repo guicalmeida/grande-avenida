@@ -1,4 +1,3 @@
-import { Azeret_Mono } from "next/font/google";
 import localFont from "next/font/local";
 
 export const timesNow = localFont({
@@ -12,8 +11,8 @@ export const timesNow = localFont({
   variable: "--font-timesNow",
 });
 
-export const azeret_mono = Azeret_Mono({
-  subsets: ["latin"],
+export const azeret_mono = localFont({
+  src: "../public/fonts/AzeretMono-VariableFont_wght.ttf",
   display: "swap",
   variable: "--font-azaretMono",
 });
