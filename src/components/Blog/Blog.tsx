@@ -22,8 +22,8 @@ export default function Blog({ posts }: { posts: PostProps[] }) {
         <h2 className="font-timesNow text-[120px] font-normal leading-[120px] tracking-[-2.4px]">
           Blog
         </h2>
-        <a href="/">
-          <Image src={blog_btn} alt="Textoos com conteúdo e pensamento" />
+        <a href="/blog">
+          <Image src={blog_btn} alt="Textos com conteúdo e pensamento" />
         </a>
       </div>
       {isMobile ? <MobileBlog posts={posts} /> : <DesktopBlog posts={posts} />}

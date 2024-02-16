@@ -1,4 +1,4 @@
-import { Teacher } from "@/models/course.model";
+import { Teacher } from "@/models/common.model";
 import Image from "next/image";
 import HTMLText from "./HTMLText";
 

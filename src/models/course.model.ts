@@ -1,20 +1,4 @@
-type RichText = {
-  html: string;
-};
-
-type Asset = {
-  id: string;
-  url: string;
-  width: number;
-  height: number;
-};
-
-export type Teacher = {
-  id: string;
-  nome: string;
-  sobre: RichText;
-  perfil: Asset;
-};
+import { Asset, RichText, Teacher } from "./common.model";
 
 export type Course = {
   capa: Asset;
