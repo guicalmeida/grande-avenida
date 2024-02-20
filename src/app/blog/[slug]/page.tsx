@@ -25,25 +25,29 @@ export default function BlogPage() {
           alt={post.titulo}
         />
         <div className="md:max-w-[1120px] font-timesNow text-white flex flex-col justify-center gap-20 absolute text-center z-10 shadow-sm">
-          <h1 className="md:text-8xl ">{post.titulo}</h1>
-          <div className="uppercase font-semibold font-azeret text-xl">
+          <h1 className="md:text-8xl text-[50px]">{post.titulo}</h1>
+          <div className="uppercase font-semibold font-azeret text-xs">
             <p>Por: {post.autor.nome}</p>
             <p>Tempo de leitura: {calculateReadingTime(onlyText)}</p>
           </div>
         </div>
       </div>
-      <div className="container mx-auto px-5 mt-7 flex flex-col gap-[140px]">
+      <div className="container mx-auto px-5 mt-7 flex flex-col gap-14 md:gap-[140px]">
         {post.corpo.map((section) => {
           return (
             <div
               key={section.id}
-              className={`${section.comMargem ? "mx-[15%]" : ""} flex gap-[24px]`}
+              className={`${
+                section.comMargem ? "md:mx-[15%]" : ""
+              } flex flex-col md:flex-row gap-[24px]`}
             >
               {section.conteudo?.map((content) => {
                 return (
                   <div
                     key={content.id}
-                    className={`${section.colunaDupla ? "w-[50%]" : ""}`}
+                    className={`${
+                      section.colunaDupla ? "w-[100%] md:w-[50%]" : ""
+                    }`}
                   >
                     <GetBlogSection content={content} />
                   </div>
@@ -57,7 +61,7 @@ export default function BlogPage() {
   );
 }
 
-function GetBlogSection({content}: {content: Conteudo}) {
+function GetBlogSection({ content }: { content: Conteudo }) {
   const { espacoVazio, id, imagem, legenda, texto } = content;
 
   if (espacoVazio) {
@@ -82,7 +86,7 @@ function GetBlogSection({content}: {content: Conteudo}) {
   } else if (!!texto?.html) {
     return (
       <div
-        className="font-azeret leading-7 [&>p]:mb-6 text-base [&>blockquote]:font-timesNow [&>blockquote]:text-6xl [&>blockquote]:leading-[60px] "
+        className="font-azeret leading-7 [&>p]:mb-6 text-base [&>blockquote]:font-timesNow [&>blockquote]:md:text-6xl [&>blockquote]:text-3xl [&>blockquote]:leading-8 [&>blockquote]:md:leading-[60px]"
         dangerouslySetInnerHTML={{ __html: texto.html }}
       ></div>
     );
