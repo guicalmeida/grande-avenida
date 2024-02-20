@@ -15,7 +15,7 @@ dayjs.locale("pt-br");
 export default function Cursos() {
   const nextCourseId = getNextCourseId(coursesMock);
   return (
-    <>
+    <main className="container mx-auto px-5 my-16">
       <div className="flex justify-between mb-12 items-center">
         <h1 className="font-timesNow text-[120px] font-normal leading-[120px] tracking-[-2.4px]">
           Cursos
@@ -53,6 +53,6 @@ export default function Cursos() {
           </>
         );
       })}
-    </>
+    </main>
   );
 }

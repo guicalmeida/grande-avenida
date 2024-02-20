@@ -1,4 +1,3 @@
-import { coursesMock } from "@/mocks/courses.mock";
 import { BlogPost } from "@/models/blogPost.model";
 import createSlug from "@/utils/createSlug";
 import Image from "next/image";

@@ -38,41 +38,43 @@ function CourseInfo({
 export default function Course() {
   const { capa, corpo, formatoDaAula, valor, professores } = coursesMock[0];
   return (
-    <div className="flex flex-col">
-      <div className="flex grow flex-col md:flex-row">
-        <div className="grow md:mr-6 flex flex-col justify-between ">
-          <div>
-            <span className="uppercase font-azeret font-semibold text-base md:text-2xl leading-6 mb-2 md:mb-4 block">
-              Curso
-            </span>
-            <CourseHeader course={coursesMock[0]} isNextClass />
+    <main className="container mx-auto px-5 my-16">
+      <div className="flex flex-col">
+        <div className="flex grow flex-col md:flex-row">
+          <div className="grow md:mr-6 flex flex-col justify-between ">
+            <div>
+              <span className="uppercase font-azeret font-semibold text-base md:text-2xl leading-6 mb-2 md:mb-4 block">
+                Curso
+              </span>
+              <CourseHeader course={coursesMock[0]} isNextClass />
+            </div>
+            <div className="hidden md:block">
+              <CourseInfo formatoDaAula={formatoDaAula} valor={valor} />
+            </div>
           </div>
-          <div className="hidden md:block">
-            <CourseInfo formatoDaAula={formatoDaAula} valor={valor} />
+          <Image
+            className="object-cover md:h-[812px] mt-4 md:mt-0 md:w-[54%] rounded-[60px] h-[400px]"
+            src={capa.url}
+            alt="imagem"
+            width={capa.width}
+            height={capa.height}
+          />
+        </div>
+        <div className="md:w-[54%] flex flex-col ml-auto mt-12">
+          <h3 className="font-azeret uppercase font-semibold text-lg mb-9">
+            Sobre o curso
+          </h3>
+          <HTMLText text={corpo.html} />
+          <div className="mt-20 flex flex-col gap-8">
+            {professores.map((prof) => {
+              return <Teacher key={prof.id} teacher={prof} />;
+            })}
           </div>
         </div>
-        <Image
-          className="object-cover md:h-[812px] mt-4 md:mt-0 md:w-[54%] rounded-[60px] h-[400px]"
-          src={capa.url}
-          alt="imagem"
-          width={capa.width}
-          height={capa.height}
-        />
-      </div>
-      <div className="md:w-[54%] flex flex-col ml-auto mt-12">
-        <h3 className="font-azeret uppercase font-semibold text-lg mb-9">
-          Sobre o curso
-        </h3>
-        <HTMLText text={corpo.html} />
-        <div className="mt-20 flex flex-col gap-8">
-          {professores.map((prof) => {
-            return <Teacher key={prof.id} teacher={prof} />;
-          })}
+        <div className="block md:hidden mt-11">
+          <CourseInfo formatoDaAula={formatoDaAula} valor={valor} />
         </div>
       </div>
-      <div className="block md:hidden mt-11">
-        <CourseInfo formatoDaAula={formatoDaAula} valor={valor} />
-      </div>
-    </div>
+    </main>
   );
 }

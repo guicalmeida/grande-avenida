@@ -98,7 +98,7 @@ const posts: PostProps[] = [
 
 export default function Home() {
   return (
-    <>
+    <main className="container mx-auto px-5 my-16">
       <Header />
       <div className="mt-14">
         <BigSlider slides={homeSlides} />
@@ -115,6 +115,6 @@ export default function Home() {
       <div className="mt-[170px]">
         <Blog posts={posts} />
       </div>
-    </>
+    </main>
   );
 }
