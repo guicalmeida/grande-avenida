@@ -38,8 +38,8 @@ export default function BlogPage() {
             <div
               key={section.id}
               className={`${
-                section.comMargem ? "md:mx-[15%]" : ""
-              } flex flex-col md:flex-row gap-[24px]`}
+                section.comMargem ? "md:mx-[15%]" : "w-[100%]"
+              } flex flex-col md:flex-row gap-[24px] `}
             >
               {section.conteudo?.map((content) => {
                 return (

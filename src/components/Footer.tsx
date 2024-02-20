@@ -7,7 +7,7 @@ export default function Footer() {
   return (
     <footer className="bg-black h-[340px] md:h-[596px] text-white md:py-8 mt-5 py-4 box-content px-5">
       <div className="container mx-auto h-[100%] flex flex-col justify-between">
-        <div className="flex justify-between md:flex-row flex-col h-[100%] mb-6 md:mb-0">
+        <div className="flex justify-between md:flex-row flex-col mb-6 md:mb-0 h-[100%] md:h-auto">
           <div className="flex justify-between">
             <p className="font-azeret uppercase scale-y-110 text-xs md:text-xl ">
               AGrandeAvenida.com
@@ -32,7 +32,7 @@ export default function Footer() {
           <Image
             src={footer_stamp}
             alt="AGA São Paulo, SP ©2024"
-            className="hidden md:block max-w-[100%] w-auto h-auto max-h-[100%]"
+            className="hidden md:block md:max-w-[100%] object-contain"
           />
         </div>
         <div className="flex gap-9 items-center">
