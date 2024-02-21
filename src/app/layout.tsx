@@ -3,6 +3,7 @@ import "glider-js/glider.min.css";
 import "./globals.css";
 import { azeret_mono, timesNow } from "../fonts";
 import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
 
 export const metadata: Metadata = {
   title: "Grande Avenida",
@@ -20,8 +21,9 @@ export default function RootLayout({
       className={`${timesNow.variable} ${azeret_mono.variable} bg-white`}
     >
       <body className="font-timesNow">
-          {children}
-          <Footer />
+        <Navbar />
+        {children}
+        <Footer />
       </body>
     </html>
   );

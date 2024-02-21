@@ -38,7 +38,7 @@ function CourseInfo({
 export default function Course() {
   const { capa, corpo, formatoDaAula, valor, professores } = coursesMock[0];
   return (
-    <main className="container mx-auto px-5 my-16">
+    <main className="container mx-auto px-5 my-[72px] ">
       <div className="flex flex-col">
         <div className="flex grow flex-col md:flex-row">
           <div className="grow md:mr-6 flex flex-col justify-between ">

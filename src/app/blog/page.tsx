@@ -5,7 +5,7 @@ import { blogPosts } from "@/mocks/posts.mock";
 
 export default function Blog() {
   return (
-    <main className="container mx-auto px-5 my-16">
+    <main className="container mx-auto px-5 my-[72px]">
       <div className="flex justify-between w-[100%] mb-20">
         <h1 className="font-timesNow text-6xl md:text-[100px] font-normal leading-10 md:leading-[90px] tracking-[-2px] mb-5">
           Blog

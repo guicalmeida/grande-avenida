@@ -98,12 +98,12 @@ const posts: PostProps[] = [
 
 export default function Home() {
   return (
-    <main className="container mx-auto px-5 my-16">
+    <main className="container mx-auto px-5 my-[72px] ">
       <Header />
       <div className="mt-14">
         <BigSlider slides={homeSlides} />
       </div>
-      <div className="mt-11">
+      <div className="mt-11" id="sobre">
         <TextIntro />
       </div>
       <div className="mt-[200px]">
