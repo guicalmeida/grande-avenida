@@ -11,25 +11,25 @@ const homeSlides: SlideProps[] = [
     title: "A GRANDE AVENIDA",
     href: "/a",
     imgUrl: slide1,
-    imgAltText: "imagem placeholder",
+    imgAltText: "imagem placeholder1",
+  },
+  {
+    title: "A GRANDE AVENIDA",
+    href: "/a",
+    imgUrl: "https://media.graphassets.com/Fl6wVSA3R7WDNDuefx1S",
+    imgAltText: "imagem placeholder2",
   },
   {
     title: "A GRANDE AVENIDA",
     href: "/a",
     imgUrl: slide1,
-    imgAltText: "imagem placeholder",
+    imgAltText: "imagem placeholder3",
   },
   {
     title: "A GRANDE AVENIDA",
     href: "/a",
     imgUrl: slide1,
-    imgAltText: "imagem placeholder",
-  },
-  {
-    title: "A GRANDE AVENIDA",
-    href: "/a",
-    imgUrl: slide1,
-    imgAltText: "imagem placeholder",
+    imgAltText: "imagem placeholder4",
   },
 ];
 
