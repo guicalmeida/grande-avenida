@@ -1,21 +1,27 @@
-"use client";
-
 import dayjs from "dayjs";
 import courses_btn from "../../../public/courses_btn.svg";
 import Image from "next/image";
 import "dayjs/locale/pt-br";
 import CourseHeader from "@/components/CourseHeader";
-import { coursesMock } from "@/mocks/courses.mock";
-import { getNextCourseId } from "@/utils/getNextCourseId";
+import { sortCoursesInViewOrder } from "@/utils/getNextCourseId";
 import Separator from "@/components/Separator";
 import Title from "@/components/Title";
 import CourseInfo from "@/components/CourseInfo";
-import useMobileCheck from "@/hooks/useMobileCheck";
+import graphqlClient from "@/services/client";
+import cursosQuery from "@/services/cursos";
+import { Course } from "@/models/course.model";
 dayjs.locale("pt-br");
 
-export default function Cursos() {
-  const nextCourseId = getNextCourseId(coursesMock);
-  const isMobile = useMobileCheck();
+async function getCursos() {
+  const res = await graphqlClient.request<{ cursos: Course[] }>(cursosQuery);
+
+  return res.cursos;
+}
+
+export default async function Cursos() {
+  const courses = await getCursos();
+  const orderedCourses = sortCoursesInViewOrder(courses);
+
   return (
     <main className="container mx-auto px-5 my-[72px] ">
       <div className="flex justify-between mb-11 md:mb-12 items-center">
@@ -28,37 +34,37 @@ export default function Cursos() {
         </a>
       </div>
       <Separator />
-      {coursesMock.map((slide, i) => {
+      {orderedCourses.map((curso, i) => {
         return (
-          <>
-            <div key={slide.titulo} className="my-5 flex flex-col md:flex-row  md:justify-between">
+          <div key={curso.id}>
+            <div className="my-5 flex flex-col md:flex-row  md:justify-between md:min-h-[450px]">
               <div className="max-w-[650px] flex flex-col justify-between">
-                <CourseHeader course={slide} />
-                {!isMobile && (
+                <CourseHeader course={curso} />
+                <div className="hidden md:block md:grow">
                   <CourseInfo
-                    course={slide}
-                    isNextClass={nextCourseId === slide.id}
+                    course={curso}
+                    isNextClass={i === 0}
                     moreDetails
                   ></CourseInfo>
-                )}
+                </div>
               </div>
               <Image
                 className="object-cover max-h-[500px] w-[100%] h-[100%] max-w-[560px] rounded-[60px] mb-5 md:mb-0"
-                src={slide.capa.url}
+                src={curso.capa.url}
                 alt="imagem"
-                width={slide.capa.width}
-                height={slide.capa.height}
+                width={curso.capa.width}
+                height={curso.capa.height}
               />
-              {isMobile && (
+              <div className="md:hidden block">
                 <CourseInfo
-                  course={slide}
-                  isNextClass={nextCourseId === slide.id}
+                  course={curso}
+                  isNextClass={i === 0}
                   moreDetails
                 ></CourseInfo>
-              )}
+              </div>
             </div>
-            {i !== coursesMock.length - 1 && <Separator />}
-          </>
+            {i !== courses.length - 1 && <Separator />}
+          </div>
         );
       })}
     </main>
