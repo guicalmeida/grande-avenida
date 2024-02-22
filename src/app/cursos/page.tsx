@@ -10,6 +10,7 @@ import createSlug from "@/utils/createSlug";
 import { getNextCourseId } from "@/utils/getNextCourseId";
 import Separator from "@/components/Separator";
 import LinkButton from "@/components/LinkButton";
+import Title from "@/components/Title";
 dayjs.locale("pt-br");
 
 export default function Cursos() {
@@ -17,9 +18,9 @@ export default function Cursos() {
   return (
     <main className="container mx-auto px-5 my-[72px] ">
       <div className="flex justify-between mb-12 items-center">
-        <h1 className="font-timesNow text-[120px] font-normal leading-[120px] tracking-[-2.4px]">
+        <Title heading="h1">
           Cursos
-        </h1>
+        </Title>
         <a href="/">
           <Image
             src={courses_btn}

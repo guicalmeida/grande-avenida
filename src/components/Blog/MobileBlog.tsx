@@ -12,20 +12,20 @@ export default function MobileBlog({ posts }: { posts: PostProps[] }) {
           return (
             <>
               <div key={post.title} className="py-8">
-                <div className="flex items-center justify-between mb-8 text-6xl leading-[60px] font-normal tracking-[-1.2px]">
+                <div className="flex items-center justify-between mb-8 text-3xl">
                   <a href={post.path}>
-                    <h3 className="font-timesNow">{post.title}</h3>
+                    <h3 className="font-timesNow w-60">{post.title}</h3>
                   </a>
                   <a
-                    className="bg-white px-[26px] py-[20px] tracking-[-0.28px] font-azeret font-medium uppercase text-sm border-solid border-2 border-black rounded-[100px]"
+                    className="bg-white px-3 py-3 font-azeret font-medium uppercase text-xs border-solid border-2 border-black rounded-[100px] w-36"
                     href={post.path}
                   >
                     <span>Texto completo</span>
                   </a>
                 </div>
-                <div className="font-azeret text-xl leading-7 font-semibold flex items-center uppercase gap-[170px]">
-                  <span>Por: {post.author}</span>
-                  <span>Leitura: {calculateReadingTime(post.text)}</span>
+                <div className="font-azeret text-sm font-semibold flex items-center uppercase justify-between">
+                  <span className="w-36">Por: {post.author}</span>
+                  <span className="w-36">Leitura: {calculateReadingTime(post.text)}</span>
                 </div>
               </div>
               <Separator />

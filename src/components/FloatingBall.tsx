@@ -12,15 +12,22 @@ export default function FloatingBall({
   initialX: number;
   initialY: number;
 }) {
-  const [startTracking, setTracking] = useState(false);
+  const [tracking, setTracking] = useState(false);
   const [docHeight, setDocHeight] = useState(0);
-  const { cursorXPos, cursorYPos } = useCursorPos(startTracking);
+  const { cursorXPos, cursorYPos } = useCursorPos(tracking);
 
   const ballRef = useRef<HTMLImageElement>(null);
 
-  if (ballRef?.current && cursorXPos && cursorYPos) {
-    ballRef.current.style.left = `${cursorXPos - 79}px`;
-    ballRef.current.style.top = `${cursorYPos - 79}px`;
+  if (ballRef?.current) {
+    if (cursorXPos && cursorYPos) {
+      ballRef.current.style.left = `${cursorXPos - 79}px`;
+      ballRef.current.style.top = `${cursorYPos - 79}px`;
+    }
+    if (tracking) {
+      ballRef.current.style.cursor = "grabbing";
+    } else {
+      ballRef.current.style.cursor = "grab";
+    }
   }
 
   useEffect(() => {
@@ -32,26 +39,28 @@ export default function FloatingBall({
     }
   }, [initialX, initialY]);
 
-  return (
-    <div
-      style={{ height: docHeight }}
-      className={`top-0 left-0 absolute pointer-events-none w-screen z-[1000]`}
-      onMouseUp={() => {
-        setTracking(false);
-      }}
-      aria-hidden
-    >
-      <Image
-        ref={ballRef}
-        src={green_ball}
-        alt="circulo verde"
-        draggable={false}
-        className="absolute w-[140px] h-[140px] pointer-events-auto"
-        onMouseDown={() => {
-          setTracking(true);
+  if (initialX && initialY) {
+    return (
+      <div
+        style={{ height: docHeight }}
+        className={`top-0 left-0 absolute pointer-events-none w-screen z-[1000]`}
+        onMouseUp={() => {
+          setTracking(false);
         }}
         aria-hidden
-      />
-    </div>
-  );
+      >
+        <Image
+          ref={ballRef}
+          src={green_ball}
+          alt="circulo verde"
+          draggable={false}
+          className="absolute w-[140px] h-[140px] pointer-events-auto cursor-grab"
+          onMouseDown={() => {
+            setTracking(true);
+          }}
+          aria-hidden
+        />
+      </div>
+    );
+  }
 }

@@ -5,6 +5,7 @@ import Image, { StaticImageData } from "next/image";
 import useMobileCheck from "@/hooks/useMobileCheck";
 import MobileBlog from "./MobileBlog";
 import DesktopBlog from "./DesktopBlog";
+import Title from "../Title";
 
 export type PostProps = {
   title: string;
@@ -18,11 +19,9 @@ export default function Blog({ posts }: { posts: PostProps[] }) {
   const isMobile = useMobileCheck();
   return (
     <div>
-      <div className="flex justify-between mb-12 items-center">
-        <h2 className="font-timesNow text-[120px] font-normal leading-[120px] tracking-[-2.4px]">
-          Blog
-        </h2>
-        <a href="/blog">
+      <div className="flex justify-between mb-3  md:mb-12 items-center">
+        <Title heading="h2">Blog</Title>
+        <a href="/blog" className="hidden md:block">
           <Image src={blog_btn} alt="Textos com conteúdo e pensamento" />
         </a>
       </div>

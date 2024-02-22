@@ -3,7 +3,7 @@
 import Glider from "react-glider";
 import Image, { StaticImageData } from "next/image";
 import arrow_left from "../../public/arrow_left.svg";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export type SlideProps = {
   title?: string;
@@ -22,7 +22,7 @@ export default function BigSlider({ slides }: { slides: SlideProps[] }) {
     }
   }, []);
   return (
-    <div className="relative h-[720px]">
+    <div className="relative h-[552px] md:h-[720px]">
       {isReady && (
         <Glider
           arrows={{
@@ -44,7 +44,7 @@ export default function BigSlider({ slides }: { slides: SlideProps[] }) {
             return (
               <ParentTag key={slide.imgAltText} href={slide.href}>
                 <Image
-                  className="object-cover w-[100%] mx-auto h-[720px] rounded-[60px]"
+                  className="object-cover w-[100%] mx-auto h-[552px] md:h-[720px] rounded-[60px]"
                   alt={slide.imgAltText}
                   src={slide.imgUrl}
                   width={1554}

@@ -5,6 +5,7 @@ import TextIntro from "@/components/TextIntro";
 import slide1 from "../../public/tmp/slide1.webp";
 import Gallery from "@/components/Gallery";
 import Blog, { PostProps } from "@/components/Blog/Blog";
+import HomeBalls from "@/components/HomeBalls";
 
 const homeSlides: SlideProps[] = [
   {
@@ -98,23 +99,24 @@ const posts: PostProps[] = [
 
 export default function Home() {
   return (
-    <main className="container mx-auto px-5 my-[72px] ">
+    <main className="container mx-auto px-3 md:px-5 my-[72px] ">
       <Header />
-      <div className="mt-14">
+      <div className="mt-6 md:mt-14">
         <BigSlider slides={homeSlides} />
       </div>
-      <div className="mt-11" id="sobre">
+      <div className="mt-6 md:mt-11" id="sobre">
         <TextIntro />
       </div>
-      <div className="mt-[200px]">
+      <div className="mt-16 md:mt-[200px]">
         <Courses />
       </div>
-      <div className="mt-[170px]">
+      <div className="mt-16 md:mt-[170px]">
         <Gallery />
       </div>
       <div className="mt-[170px]">
         <Blog posts={posts} />
       </div>
+      <HomeBalls />
     </main>
   );
 }

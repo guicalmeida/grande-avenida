@@ -23,7 +23,6 @@ export default function useCursorPos(startTracking = false) {
       window.removeEventListener("mousemove", handleMouseMove);
     };
   });
-  console.count("retornou");
 
   return cursorPos;
 }
