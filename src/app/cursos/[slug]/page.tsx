@@ -1,12 +1,14 @@
 import CourseHeader from "@/components/CourseHeader";
+import CourseInfo from "@/components/CourseInfo";
 import HTMLText from "@/components/HTMLText";
 import LinkButton from "@/components/LinkButton";
 import Separator from "@/components/Separator";
 import Teacher from "@/components/Teacher";
 import { coursesMock } from "@/mocks/courses.mock";
+import { getNextCourseId } from "@/utils/getNextCourseId";
 import Image from "next/image";
 
-function CourseInfo({
+function CourseRequirements({
   formatoDaAula,
   valor,
 }: {
@@ -36,7 +38,9 @@ function CourseInfo({
 }
 
 export default function Course() {
-  const { capa, corpo, formatoDaAula, valor, professores } = coursesMock[0];
+  const { capa, corpo, formatoDaAula, valor, professores, id } = coursesMock[0];
+  const nextCourseId = getNextCourseId(coursesMock);
+
   return (
     <main className="container mx-auto px-5 my-[72px] ">
       <div className="flex flex-col">
@@ -46,10 +50,16 @@ export default function Course() {
               <span className="uppercase font-azeret font-semibold text-base md:text-2xl leading-6 mb-2 md:mb-4 block">
                 Curso
               </span>
-              <CourseHeader course={coursesMock[0]} isNextClass />
+              <CourseHeader course={coursesMock[0]} />
+              <div className="hidden md:block">
+                <CourseInfo
+                  course={coursesMock[0]}
+                  isNextClass={nextCourseId === id}
+                />
+              </div>
             </div>
             <div className="hidden md:block">
-              <CourseInfo formatoDaAula={formatoDaAula} valor={valor} />
+              <CourseRequirements formatoDaAula={formatoDaAula} valor={valor} />
             </div>
           </div>
           <Image
@@ -59,6 +69,12 @@ export default function Course() {
             width={capa.width}
             height={capa.height}
           />
+              <div className="md:hidden block mt-3">
+                <CourseInfo
+                  course={coursesMock[0]}
+                  isNextClass={nextCourseId === id}
+                />
+              </div>
         </div>
         <div className="md:w-[54%] flex flex-col ml-auto mt-12">
           <h3 className="font-azeret uppercase font-semibold text-lg mb-9">
@@ -72,7 +88,7 @@ export default function Course() {
           </div>
         </div>
         <div className="block md:hidden mt-11">
-          <CourseInfo formatoDaAula={formatoDaAula} valor={valor} />
+          <CourseRequirements formatoDaAula={formatoDaAula} valor={valor} />
         </div>
       </div>
     </main>
