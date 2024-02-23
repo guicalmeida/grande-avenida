@@ -1,4 +1,4 @@
-import Courses from "@/components/Courses";
+import HomeCoursesSection from "@/components/HomeCoursesSection";
 import Header from "@/components/Header";
 import BigSlider, { SlideProps } from "@/components/BigSlider";
 import TextIntro from "@/components/TextIntro";
@@ -47,7 +47,7 @@ export default async function Home() {
         <TextIntro />
       </div>
       <div className="mt-16 md:mt-[200px]">
-        <Courses />
+        <HomeCoursesSection courses={cursos} />
       </div>
       <div className="mt-16 md:mt-[170px]">
         <Gallery />
