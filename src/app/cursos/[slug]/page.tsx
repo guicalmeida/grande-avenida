@@ -1,4 +1,4 @@
-import CourseTemplate from "@/app/templates/Course";
+import CourseTemplate from "@/templates/Course";
 import { getCurso, getCursos } from "@/services/cursos";
 
 export async function generateStaticParams() {
