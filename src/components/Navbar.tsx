@@ -62,7 +62,7 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="relative z-40">
+    <div className="relative z-50">
       <TopMenu setIsOpen={setIsOpen} isOpen={isOpen} />
       {isOpen && (
         <div className="fixed left-0 top-0 w-screen h-screen bg-black">
