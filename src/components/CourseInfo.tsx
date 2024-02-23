@@ -1,6 +1,7 @@
 import { Course, availabilityMap } from "@/models/course.model";
 import dayjs from "dayjs";
 import LinkButton from "./LinkButton";
+dayjs.locale('pt-br')
 
 export default function CourseInfo({
   course,

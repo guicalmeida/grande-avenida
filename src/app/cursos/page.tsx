@@ -1,4 +1,3 @@
-import dayjs from "dayjs";
 import courses_btn from "../../../public/courses_btn.svg";
 import Image from "next/image";
 import "dayjs/locale/pt-br";
@@ -7,16 +6,7 @@ import { sortCoursesInViewOrder } from "@/utils/getNextCourseId";
 import Separator from "@/components/Separator";
 import Title from "@/components/Title";
 import CourseInfo from "@/components/CourseInfo";
-import graphqlClient from "@/services/client";
-import cursosQuery from "@/services/cursos";
-import { Course } from "@/models/course.model";
-dayjs.locale("pt-br");
-
-async function getCursos() {
-  const res = await graphqlClient.request<{ cursos: Course[] }>(cursosQuery);
-
-  return res.cursos;
-}
+import { getCursos } from "@/services/cursos";
 
 export default async function Cursos() {
   const courses = await getCursos();
