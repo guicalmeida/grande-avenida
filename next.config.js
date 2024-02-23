@@ -10,7 +10,7 @@ const nextConfig = {
       },
     ],
   },
-  basePath: process.env.NODE_ENV === "development" ? "" : "/grande-avenida",
+  basePath: process.env.BASE_PATH,
   staticPageGenerationTimeout: 10000,
   experimental: {
     cpus: 1,
