@@ -43,7 +43,7 @@ export default function FloatingBall({
     return (
       <div
         style={{ height: docHeight }}
-        className={`top-0 left-0 absolute pointer-events-none w-screen z-[1000]`}
+        className={`top-0 left-0 absolute pointer-events-none w-screen z-[1000] select-none`}
         onMouseUp={() => {
           setTracking(false);
         }}
