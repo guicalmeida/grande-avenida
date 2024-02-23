@@ -3,7 +3,7 @@
 const isDevelopment = process.env.NODE_ENV === 'development' 
 
 const nextConfig = {
-  basePath: isDevelopment ? '' : "output",
+  output: isDevelopment ? '' : "export",
   images: {
     remotePatterns: [
       {
