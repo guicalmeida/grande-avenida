@@ -5,7 +5,7 @@ export type   BlogPost = {
   corpo: Corpo[];
   publishedDate: string;
   id: string;
-  autor: Teacher;
+  autores: Teacher[];
   resumo: string;
   titulo: string;
   slug: string

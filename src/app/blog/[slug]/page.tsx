@@ -1,13 +1,29 @@
-import { blogPosts } from "@/mocks/posts.mock";
 import { Conteudo } from "@/models/blogPost.model";
+import { getBlog, getBlogs } from "@/services/blog";
+import formatAuthors from "@/utils/formatAuthors";
 import calculateReadingTime from "@/utils/getReadingTime";
 import Image from "next/image";
 
-export default function BlogPage() {
-  const post = blogPosts[0];
+export async function generateStaticParams() {
+  const blogPosts = await getBlogs();
+
+  return blogPosts?.map((post) => {
+    return {
+      slug: post.slug,
+    };
+  });
+}
+
+export default async function BlogPage({
+  params,
+}: {
+  params: { slug: string };
+}) {
+  const post = await getBlog(params.slug);
+  const { autores, capa, corpo, titulo } = post;
 
   let onlyText = "";
-  post.corpo.forEach((section) => {
+  corpo.forEach((section) => {
     section?.conteudo?.forEach((cont) => {
       if (cont?.texto?.html) {
         onlyText += `\n${cont.texto.html}`;
@@ -17,23 +33,29 @@ export default function BlogPage() {
   return (
     <main className="mx-auto mb-16">
       <div className="h-[580px] md:h-[850px] w-[100%] relative flex items-center justify-center">
-        <Image
-          className="absolute left-0 top-0 z-0 w-[100%] h-[100%] object-cover"
-          src={post.capa.url}
-          height={post.capa.height}
-          width={post.capa.width}
-          alt={post.titulo}
-        />
+        <div>
+          <div
+            aria-hidden
+            className="bg-[rgba(0,0,0,0.4)] absolute left-0 top-0 z-[1] w-[100%] h-[100%]"
+          />
+          <Image
+            className="absolute left-0 top-0 z-0 w-[100%] h-[100%] object-cover"
+            src={capa.url}
+            height={capa.height}
+            width={capa.width}
+            alt={titulo}
+          />
+        </div>
         <div className="md:max-w-[1120px] font-timesNow text-white flex flex-col justify-center gap-20 absolute text-center z-10 shadow-sm">
-          <h1 className="md:text-8xl text-[50px]">{post.titulo}</h1>
-          <div className="uppercase font-semibold font-azeret text-xs">
-            <p>Por: {post.autor.nome}</p>
+          <h1 className="md:text-8xl text-[50px]">{titulo}</h1>
+          <div className="uppercase font-semibold font-azeret text-xs md:text-xl">
+            <p>Por: {formatAuthors(autores)}</p>
             <p>Tempo de leitura: {calculateReadingTime(onlyText)}</p>
           </div>
         </div>
       </div>
       <div className="container mx-auto px-5 mt-7 flex flex-col gap-14 md:gap-[140px]">
-        {post.corpo.map((section) => {
+        {corpo.map((section) => {
           return (
             <div
               key={section.id}
@@ -62,7 +84,7 @@ export default function BlogPage() {
 }
 
 function GetBlogSection({ content }: { content: Conteudo }) {
-  const { espacoVazio, id, imagem, legenda, texto } = content;
+  const { espacoVazio, imagem, legenda, texto } = content;
 
   if (espacoVazio) {
     return <div></div>;
