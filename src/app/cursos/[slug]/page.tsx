@@ -1,12 +1,10 @@
 import CourseTemplate from "@/app/templates/Course";
 import { getCurso, getCursos } from "@/services/cursos";
-import { sortCoursesInViewOrder } from "@/utils/getNextCourseId";
 
 export async function generateStaticParams() {
   const courses = await getCursos();
-  const orderedCourses = sortCoursesInViewOrder(courses);
 
-  return orderedCourses?.map((curso) => {
+  return courses?.map((curso) => {
     return {
       slug: curso.slug,
     };
