@@ -2,17 +2,17 @@ import { BlogPost } from "./blogPost.model";
 import { Asset } from "./common.model";
 import { Course } from "./course.model";
 
-interface Galeria {
+export interface Galeria {
   id: string;
   imagem: Asset;
-  legenda: string;
+  descricao: string;
 }
 
-interface Carrossel {
+export interface Carrossel {
   descricao: string;
   id: string;
   imagem: Asset;
-  url: string;
+  url?: string;
 }
 
 export type HomeBlogPost = Pick<

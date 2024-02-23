@@ -1,29 +1,10 @@
-import slide1 from "../../public/tmp/slide1.webp";
 import gallery_btn from "../../public/gallery_btn.svg";
 import Image from "next/image";
 import BigSlider from "./BigSlider";
 import Title from "./Title";
+import { Galeria } from "@/models/home.model";
 
-const galeriaProps = [
-  {
-    imgUrl: slide1,
-    imgAltText: "imagem placeholder 1",
-  },
-  {
-    imgUrl: slide1,
-    imgAltText: "imagem placeholder 2",
-  },
-  {
-    imgUrl: slide1,
-    imgAltText: "imagem placeholder 3",
-  },
-  {
-    imgUrl: slide1,
-    imgAltText: "imagem placeholder 4",
-  },
-];
-
-export default function Gallery() {
+export default function Gallery({images}: {images: Galeria[]}) {
   return (
     <>
       <div className="flex justify-between mb-3 md:mb-12 items-center">
@@ -37,7 +18,7 @@ export default function Gallery() {
           />
         </a>
       </div>
-      <BigSlider slides={galeriaProps} />
+      <BigSlider slides={images} />
     </>
   );
 }

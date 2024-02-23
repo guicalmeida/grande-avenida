@@ -1,18 +1,12 @@
 "use client";
 
 import Glider from "react-glider";
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 import arrow_left from "../../public/arrow_left.svg";
 import { useEffect, useRef, useState } from "react";
+import { Carrossel } from "@/models/home.model";
 
-export type SlideProps = {
-  title?: string;
-  imgUrl: string | StaticImageData;
-  imgAltText: string;
-  href?: string;
-};
-
-export default function BigSlider({ slides }: { slides: SlideProps[] }) {
+export default function BigSlider({ slides }: { slides: Carrossel[] }) {
   const dotsEl = useRef<HTMLDivElement>(null);
   const [isReady, setIsReady] = useState(false);
 
@@ -38,17 +32,18 @@ export default function BigSlider({ slides }: { slides: SlideProps[] }) {
           slidesToScroll={1}
         >
           {slides.map((slide) => {
+            const {descricao,id,imagem,url} = slide
             const ParentTag = (
-              slide.href ? "a" : "div"
+              url ? "a" : "div"
             ) as keyof JSX.IntrinsicElements;
             return (
-              <ParentTag key={slide.imgAltText} href={slide.href}>
+              <ParentTag key={id} href={url}>
                 <Image
                   className="object-cover w-[100%] mx-auto h-[552px] md:h-[720px] rounded-[60px]"
-                  alt={slide.imgAltText}
-                  src={slide.imgUrl}
-                  width={1554}
-                  height={1085}
+                  alt={descricao}
+                  src={imagem?.url}
+                  width={imagem?.width}
+                  height={imagem?.height}
                 />
               </ParentTag>
             );

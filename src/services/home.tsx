@@ -35,7 +35,7 @@ const homeQuery = gql`
         url
         width
       }
-      legenda
+      descricao
     }
     carrosseis {
       descricao
