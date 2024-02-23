@@ -1,9 +1,10 @@
 import Image from "next/image";
 import blog_btn from "../../../public/blog_btn.svg";
 import PostPreview from "@/components/Blog/postPreview";
-import { blogPosts } from "@/mocks/posts.mock";
+import { getBlogs } from "@/services/blog";
 
-export default function Blog() {
+export default async function Blog() {
+  const posts = await getBlogs()
   return (
     <main className="container mx-auto px-5 my-[72px]">
       <div className="flex justify-between w-[100%] mb-20">
@@ -13,7 +14,7 @@ export default function Blog() {
         <Image src={blog_btn} alt="Textos com conteúdo e pensamento" />
       </div>
       <div className="flex flex-col ">
-        {blogPosts.map((post, i) => {
+        {posts.map((post, i) => {
           const possibleWidths = ["w-[33%]", "w-[41%]", "w-[50%]"];
           const randomWidthStyle =
             possibleWidths[Math.floor(Math.random() * 3)];
