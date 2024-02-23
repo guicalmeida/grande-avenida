@@ -1,31 +1,31 @@
+import { HomeBlogPost } from "@/models/home.model";
 import Separator from "../Separator";
-import { PostProps } from "./Blog";
-import calculateReadingTime from "@/utils/getReadingTime";
+import formatAuthors from "@/utils/formatAuthors";
 
-export default function MobileBlog({ posts }: { posts: PostProps[] }) {
+export default function MobileBlog({ posts }: { posts: HomeBlogPost[] }) {
   return (
     <>
       <div>
         <Separator />
 
         {posts.slice(0, 3).map((post) => {
+          const { slug, titulo, autores } = post;
           return (
             <>
-              <div key={post.title} className="py-8">
+              <div key={titulo} className="py-8">
                 <div className="flex items-center justify-between mb-8 text-3xl">
-                  <a href={post.path}>
-                    <h3 className="font-timesNow w-60">{post.title}</h3>
+                  <a href={`blog/${slug}`}>
+                    <h3 className="font-timesNow w-60">{titulo}</h3>
                   </a>
                   <a
                     className="bg-white px-3 py-3 font-azeret font-medium uppercase text-xs border-solid border-2 border-black rounded-[100px] w-36"
-                    href={post.path}
+                    href={`blog/${slug}`}
                   >
                     <span>Texto completo</span>
                   </a>
                 </div>
                 <div className="font-azeret text-sm font-semibold flex items-center uppercase justify-between">
-                  <span className="w-36">Por: {post.author}</span>
-                  <span className="w-36">Leitura: {calculateReadingTime(post.text)}</span>
+                  <span className="w-36">Por: {formatAuthors(autores)}</span>
                 </div>
               </div>
               <Separator />

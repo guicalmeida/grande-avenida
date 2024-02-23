@@ -1,6 +1,6 @@
 import Image from "next/image";
 import blog_btn from "../../../public/blog_btn.svg";
-import PostPreview from "@/components/Blog/postPreview";
+import PostPreview from "@/components/HomeBlogSection/postPreview";
 import { getBlogs } from "@/services/blog";
 
 export default async function Blog() {
