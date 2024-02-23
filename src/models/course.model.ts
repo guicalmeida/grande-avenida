@@ -11,6 +11,7 @@ export type Course = {
   statusDeInscricao: boolean;
   titulo: string;
   valor?: string;
+  slug: string
 };
 
 export function availabilityMap(

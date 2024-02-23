@@ -8,6 +8,7 @@ export type   BlogPost = {
   autor: Teacher;
   resumo: string;
   titulo: string;
+  slug: string
 };
 
 export interface Conteudo {

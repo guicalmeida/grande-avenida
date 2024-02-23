@@ -1,7 +1,6 @@
 import { Course, availabilityMap } from "@/models/course.model";
 import dayjs from "dayjs";
 import LinkButton from "./LinkButton";
-import createSlug from "@/utils/createSlug";
 
 export default function CourseInfo({
   course,
@@ -12,7 +11,7 @@ export default function CourseInfo({
   isNextClass: boolean;
   moreDetails?: boolean;
 }) {
-  const { statusDeInscricao, inicio, fim, titulo } = course;
+  const { statusDeInscricao, inicio, fim, slug } = course;
 
   const datesStr = `${dayjs(inicio).format("DD MMM")} - ${dayjs(fim).format(
     "DD MMM"
@@ -32,7 +31,7 @@ export default function CourseInfo({
         </p>
       </div>
       {moreDetails && (
-        <LinkButton href={`cursos/${createSlug(titulo)}`}>
+        <LinkButton href={`cursos/${slug}`}>
           Saiba mais
         </LinkButton>
       )}

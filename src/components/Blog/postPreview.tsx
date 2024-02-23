@@ -1,11 +1,9 @@
 import { BlogPost } from "@/models/blogPost.model";
-import createSlug from "@/utils/createSlug";
 import Image from "next/image";
 import LinkButton from "../LinkButton";
 
 export default function PostPreview({ blogPost }: { blogPost: BlogPost }) {
-  const { capa, resumo, titulo } = blogPost;
-  const slug = createSlug(titulo);
+  const { capa, resumo, titulo, slug } = blogPost;
   return (
     <div className="font-azeret text-base flex flex-col gap-5">
       <a href={"blog/" + slug}>
