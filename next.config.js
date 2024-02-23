@@ -10,6 +10,7 @@ const nextConfig = {
       },
     ],
   },
+  basePath: "/grande-avenida",
   staticPageGenerationTimeout: 10000,
   experimental: {
     cpus: 1,
