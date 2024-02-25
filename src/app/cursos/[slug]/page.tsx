@@ -64,7 +64,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
             </div>
           </div>
           <Image
-            className="object-cover md:max-h-[100%] mt-4 md:mt-0 md:w-[54%] rounded-[60px] h-[400px] md:max-w-[600px]"
+            className="object-cover md:max-h-[100%] mt-4 md:mt-0 md:w-[54%] rounded-[60px] h-[400px] md:max-w-full md:min-w-[54%]"
             src={capa.url}
             alt="imagem"
             width={capa.width}
