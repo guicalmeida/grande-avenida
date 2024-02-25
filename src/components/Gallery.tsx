@@ -3,6 +3,7 @@ import Image from "next/image";
 import BigSlider from "./BigSlider";
 import Title from "./Title";
 import { Galeria } from "@/models/home.model";
+import Link from "next/link";
 
 export default function Gallery({images}: {images: Galeria[]}) {
   return (
@@ -11,12 +12,12 @@ export default function Gallery({images}: {images: Galeria[]}) {
         <Title heading='h2'>
           Galeria
         </Title>
-        <a href="/" className="hidden md:block">
+        <Link href="/" className="hidden md:block">
           <Image
             src={gallery_btn}
             alt="O espaço e o que rola por lá!"
           />
-        </a>
+        </Link>
       </div>
       <BigSlider slides={images} />
     </>

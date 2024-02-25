@@ -7,6 +7,7 @@ import Separator from "@/components/Separator";
 import Title from "@/components/Title";
 import CourseInfo from "@/components/CourseInfo";
 import { getCursos } from "@/services/cursos";
+import Link from "next/link";
 
 export default async function Cursos() {
   const courses = await getCursos();
@@ -16,12 +17,12 @@ export default async function Cursos() {
     <main className="container mx-auto px-5 my-[72px] ">
       <div className="flex justify-between mb-11 md:mb-12 items-center">
         <Title heading="h1">Cursos</Title>
-        <a href="/" className="hidden md:block">
+        <Link href="/" className="hidden md:block">
           <Image
             src={courses_btn}
             alt="Explore nossos cursos atuais e futuros"
           />
-        </a>
+        </Link>
       </div>
       <Separator />
       {orderedCourses.map((curso, i) => {

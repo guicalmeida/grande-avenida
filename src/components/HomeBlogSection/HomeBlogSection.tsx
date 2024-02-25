@@ -7,18 +7,19 @@ import MobileBlog from "./MobileBlog";
 import DesktopBlog from "./DesktopBlog";
 import Title from "../Title";
 import { HomeBlogPost } from "@/models/home.model";
+import Link from "next/link";
 
 export default function HomeBlogSection({ posts }: { posts: HomeBlogPost[] }) {
   const isMobile = useMobileCheck();
   return (
     <div>
       <div className="flex justify-between mb-3  md:mb-12 items-center">
-        <a href="/blog">
+        <Link href="/blog">
           <Title heading="h2">Blog</Title>
-        </a>
-        <a href="/blog" className="hidden md:block">
+        </Link>
+        <Link href="/blog" className="hidden md:block">
           <Image src={blog_btn} alt="Textos com conteúdo e pensamento" />
-        </a>
+        </Link>
       </div>
       {isMobile ? <MobileBlog posts={posts} /> : <DesktopBlog posts={posts} />}
     </div>

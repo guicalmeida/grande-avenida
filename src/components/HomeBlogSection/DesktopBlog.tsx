@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { HomeBlogPost } from "@/models/home.model";
+import Link from "next/link";
 
 export default function DesktopBlog({ posts }: { posts: HomeBlogPost[] }) {
   return (
@@ -26,7 +27,7 @@ export default function DesktopBlog({ posts }: { posts: HomeBlogPost[] }) {
                 Novo texto!
               </span>
             )}
-            <a href={`${slug}`}>
+            <Link href={`blog/${slug}`}>
               <h3
                 className={
                   "group-first:text-[120px] group-first:leading-[100px] group-first:opacity-100 text-5xl group-hover:opacity-100 font-timesNow opacity-0 font-normal tracking-[-2.4px] text-center duration-300 transition-opacity"
@@ -34,15 +35,15 @@ export default function DesktopBlog({ posts }: { posts: HomeBlogPost[] }) {
               >
                 {titulo}
               </h3>
-            </a>
-            <a
-              href={`${slug}`}
+            </Link>
+            <Link
+              href={`blog/${slug}`}
               className={
                 "group-first:opacity-100 group-hover:opacity-100 bg-white opacity-0 px-[30px] py-[20px] font-azeret duration-300 transition-opacity font-medium uppercase text-sm border-solid border-2 border-black rounded-[100px]"
               }
             >
               <span>saiba mais</span>
-            </a>
+            </Link>
           </div>
         );
       })}

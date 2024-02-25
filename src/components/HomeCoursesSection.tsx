@@ -8,6 +8,7 @@ import arrow_left from "../../public/arrow_left.svg";
 import useMobileCheck from "@/hooks/useMobileCheck";
 import LinkButton from "./LinkButton";
 import { HomeCourse } from "@/models/home.model";
+import Link from "next/link";
 
 export default function HomeCoursesSection({
   courses,
@@ -19,15 +20,15 @@ export default function HomeCoursesSection({
   return (
     <div className="relative h-[463px] md:h-auto w-[calc(100vw-12px)] md:w-auto overflow-hidden">
       <div className="flex justify-between mb-3 md:mb-12 items-center">
-        <a href="/cursos">
+        <Link href="/cursos">
           <Title heading="h2">Cursos</Title>
-        </a>
-        <a href="/cursos" className="hidden md:block">
+        </Link>
+        <Link href="/cursos" className="hidden md:block">
           <Image
             src={courses_btn}
             alt="Explore nossos cursos atuais e futuros"
           />
-        </a>
+        </Link>
       </div>
       <div className="md:static absolute w-screen md:w-auto">
         <Glider
@@ -60,11 +61,11 @@ export default function HomeCoursesSection({
                   />
                 </div>
                 <div className="h-[354px] md:h-[516px] flex flex-col items-center justify-between absolute z-10 left-0 m-auto w-3/4 right-0 top-7 md:top-11">
-                  <a href={`cursos/${slug}`}>
+                  <Link href={`cursos/${slug}`}>
                     <h3 className="text-center font-timesNow text-4xl  md:text-[90px] md:leading-[80px] font-normal text-[#F8F8F8]">
                       {titulo}
                     </h3>
-                  </a>
+                  </Link>
                   <LinkButton href={`cursos/${slug}`}>saiba mais</LinkButton>
                 </div>
               </div>
