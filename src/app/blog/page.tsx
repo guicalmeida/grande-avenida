@@ -1,5 +1,4 @@
 import Image from "next/image";
-import blog_btn from "../../../public/blog_btn.svg";
 import PostPreview from "@/components/HomeBlogSection/postPreview";
 import { getBlogs } from "@/services/blog";
 
@@ -11,7 +10,6 @@ export default async function Blog() {
         <h1 className="font-timesNow text-6xl md:text-[100px] font-normal leading-10 md:leading-[90px] tracking-[-2px] mb-5">
           Blog
         </h1>
-        <Image src={blog_btn} alt="Textos com conteúdo e pensamento" />
       </div>
       <div className="flex flex-col ">
         {posts.map((post, i) => {

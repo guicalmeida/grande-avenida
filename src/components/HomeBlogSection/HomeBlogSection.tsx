@@ -1,6 +1,5 @@
 "use client";
 
-import blog_btn from "../../../public/blog_btn.svg";
 import Image from "next/image";
 import useMobileCheck from "@/hooks/useMobileCheck";
 import MobileBlog from "./MobileBlog";
@@ -16,9 +15,6 @@ export default function HomeBlogSection({ posts }: { posts: HomeBlogPost[] }) {
       <div className="flex justify-between mb-3  md:mb-12 items-center">
         <Link href="/blog">
           <Title heading="h2">Blog</Title>
-        </Link>
-        <Link href="/blog" className="hidden md:block">
-          <Image src={blog_btn} alt="Textos com conteúdo e pensamento" />
         </Link>
       </div>
       {isMobile ? <MobileBlog posts={posts} /> : <DesktopBlog posts={posts} />}
