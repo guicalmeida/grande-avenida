@@ -1,7 +1,6 @@
 "use client";
 
 import Glider from "react-glider";
-import courses_btn from "../../public/courses_btn.svg";
 import Image from "next/image";
 import Title from "./Title";
 import arrow_left from "../../public/arrow_left.svg";
@@ -18,19 +17,13 @@ export default function HomeCoursesSection({
   const isMobile = useMobileCheck();
 
   return (
-    <div className="relative h-[463px] md:h-auto w-[calc(100vw-12px)] md:w-auto overflow-hidden">
+    <div className="relative h-[463px] md:h-[768px] w-[calc(100vw-12px)] md:w-auto overflow-hidden">
       <div className="flex justify-between mb-3 md:mb-12 items-center">
         <Link href="/cursos">
           <Title heading="h2">Cursos</Title>
         </Link>
-        <Link href="/cursos" className="hidden md:block">
-          <Image
-            src={courses_btn}
-            alt="Explore nossos cursos atuais e futuros"
-          />
-        </Link>
       </div>
-      <div className="md:static absolute w-screen md:w-auto">
+      <div className="md:static absolute w-screen md:w-auto md:h-[600px]">
         <Glider
           className="h-[408px] md:h-[600px]"
           arrows={{
@@ -45,29 +38,21 @@ export default function HomeCoursesSection({
         >
           {courses.map((slide) => {
             const { capa, slug, titulo } = slide;
+
             return (
               <div
                 key={titulo}
-                className="relative px-11 md:px-[100px] py-11 mr-3 md:mr-5 z-40 h-full"
+                className="px-11 md:px-10 py-11 mr-3 md:mr-5 z-40 md:min-h-[600px] w-full min-h-[408px] rounded-[60px] bg-cover flex flex-col items-center justify-between"
+                style={{
+                  backgroundImage: `linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 50%), url(${capa.url})`,
+                }}
               >
-                <div>
-                  <div className="left-0 top-0 object-cover h-[408px] md:h-[600px] w-[247px] md:w-full rounded-[60px] absolute z-[1] bg-gradient-to-b	from-black via-transparent via-50%"></div>
-                  <Image
-                    className="left-0 top-0 object-cover h-[408px] md:h-[600px] w-full rounded-[60px] absolute z-0 "
-                    src={capa.url}
-                    height={capa.height}
-                    width={capa.width}
-                    alt="imagem"
-                  />
-                </div>
-                <div className="h-[354px] md:h-[516px] flex flex-col items-center justify-between absolute z-10 left-0 m-auto w-3/4 right-0 top-7 md:top-11">
-                  <Link href={`cursos/${slug}`}>
-                    <h3 className="text-center font-timesNow text-4xl  md:text-[90px] md:leading-[80px] font-normal text-[#F8F8F8]">
-                      {titulo}
-                    </h3>
-                  </Link>
-                  <LinkButton href={`cursos/${slug}`}>saiba mais</LinkButton>
-                </div>
+                <Link href={`cursos/${slug}`}>
+                  <h3 className="text-center font-timesNow text-4xl  md:text-[90px] md:leading-[80px] font-normal text-[#F8F8F8]">
+                    {titulo}
+                  </h3>
+                </Link>
+                <LinkButton href={`cursos/${slug}`}>saiba mais</LinkButton>
               </div>
             );
           })}
