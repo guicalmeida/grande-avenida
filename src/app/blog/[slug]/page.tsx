@@ -2,6 +2,7 @@ import { Conteudo } from "@/models/blogPost.model";
 import { getBlog, getBlogs } from "@/services/blog";
 import formatAuthors from "@/utils/formatAuthors";
 import calculateReadingTime from "@/utils/getReadingTime";
+import { Metadata, ResolvingMetadata } from "next";
 import Image from "next/image";
 
 export async function generateStaticParams() {
@@ -12,6 +13,25 @@ export async function generateStaticParams() {
       slug: post.slug,
     };
   });
+}
+
+export async function generateMetadata(
+  { params }: { params: { slug: string } },
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const post = await getBlog(params.slug);
+  const previousImages = (await parent).openGraph?.images || [];
+
+  return {
+    title: post.titulo,
+    description: post.resumo,
+    openGraph: {
+      images: [post.capa.url, ...previousImages],
+      type: 'article',
+      authors: post.autores.map(autor => autor.nome),
+      publishedTime: post.publishedDate
+    },
+  };
 }
 
 export default async function BlogPage({

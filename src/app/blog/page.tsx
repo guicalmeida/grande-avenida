@@ -1,6 +1,10 @@
-import Image from "next/image";
 import PostPreview from "@/components/HomeBlogSection/postPreview";
 import { getBlogs } from "@/services/blog";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title:'Blog',
+};
 
 export default async function Blog() {
   const posts = await getBlogs()

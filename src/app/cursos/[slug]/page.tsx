@@ -6,6 +6,8 @@ import LinkButton from "@/components/LinkButton";
 import Separator from "@/components/Separator";
 import Teacher from "@/components/Teacher";
 import Image from "next/image";
+import { Metadata, ResolvingMetadata } from "next";
+import stripHTML from "@/utils/stripHTML";
 
 export async function generateStaticParams() {
   const courses = await getCursos();
@@ -17,33 +19,26 @@ export async function generateStaticParams() {
   });
 }
 
-function CourseRequirements({
-  formatoDaAula,
-  valor,
-}: {
-  formatoDaAula?: string;
-  valor?: string;
-}) {
-  return (
-    <div className="uppercase font-azeret font-medium text-sm md:text-lg leading-6 flex flex-col whitespace-pre md:max-w-[450px]">
-      {formatoDaAula && (
-        <div>
-          <Separator />
-          <p className="my-4">{formatoDaAula}</p>
-        </div>
-      )}
-      {valor && (
-        <div>
-          <Separator />
-          <p className="my-4">{valor}</p>
-        </div>
-      )}
-      <Separator />
-      <div className="mt-4">
-        <LinkButton href={"/"}>Inscreva-se</LinkButton>
-      </div>
-    </div>
-  );
+export async function generateMetadata(
+  { params }: { params: { slug: string } },
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const course = await getCurso(params.slug);
+  const previousImages = (await parent).openGraph?.images || [];
+
+  const firstParagraph = stripHTML(course.corpo.html)
+    .split("\n")
+    .filter((val) => val != "" && !!val)[0];
+
+  return {
+    title: course.titulo,
+    description: firstParagraph,
+    openGraph: {
+      images: [course.capa.url, ...previousImages],
+      type: "article",
+      authors: course.professores.map(prof => prof.nome)
+    },
+  };
 }
 
 export default async function Page({ params }: { params: { slug: string } }) {
@@ -95,5 +90,34 @@ export default async function Page({ params }: { params: { slug: string } }) {
         </div>
       </div>
     </main>
+  );
+}
+
+function CourseRequirements({
+  formatoDaAula,
+  valor,
+}: {
+  formatoDaAula?: string;
+  valor?: string;
+}) {
+  return (
+    <div className="uppercase font-azeret font-medium text-sm md:text-lg leading-6 flex flex-col whitespace-pre md:max-w-[450px]">
+      {formatoDaAula && (
+        <div>
+          <Separator />
+          <p className="my-4">{formatoDaAula}</p>
+        </div>
+      )}
+      {valor && (
+        <div>
+          <Separator />
+          <p className="my-4">{valor}</p>
+        </div>
+      )}
+      <Separator />
+      <div className="mt-4">
+        <LinkButton href={"/"}>Inscreva-se</LinkButton>
+      </div>
+    </div>
   );
 }

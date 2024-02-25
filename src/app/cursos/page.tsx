@@ -6,6 +6,12 @@ import Separator from "@/components/Separator";
 import Title from "@/components/Title";
 import CourseInfo from "@/components/CourseInfo";
 import { getCursos } from "@/services/cursos";
+import { Metadata } from "next";
+
+
+export const metadata: Metadata = {
+  title:'Cursos',
+};
 
 export default async function Cursos() {
   const courses = await getCursos();
