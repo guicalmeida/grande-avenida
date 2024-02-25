@@ -34,7 +34,7 @@ export default function CourseInfo({
         )}
       </div>
       {moreDetails && (
-        <LinkButton href={`cursos/${slug}`}>Saiba mais</LinkButton>
+        <LinkButton href={`cursos/${slug}?proximo=${isNextClass}`}>Saiba mais</LinkButton>
       )}
     </div>
   );
