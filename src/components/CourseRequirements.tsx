@@ -32,6 +32,9 @@ export default function CourseRequirements({ curso }: { curso: Course }) {
             onClick={() => {
               setIsModalOpen(true);
             }}
+            onKeyDown={(e) => {
+              if (e.key === "Escape") setIsModalOpen(false);
+            }}      
           >
             {isClosed ? "Demonstrar interesse" : "Inscreva-se"}
           </button>
