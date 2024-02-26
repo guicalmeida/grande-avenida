@@ -2,12 +2,11 @@ import { getCurso, getCursos } from "@/services/cursos";
 import CourseHeader from "@/components/CourseHeader";
 import { CourseInfoWithQParam } from "@/components/CourseInfoWithQParam";
 import HTMLText from "@/components/HTMLText";
-import LinkButton from "@/components/LinkButton";
-import Separator from "@/components/Separator";
 import Teacher from "@/components/Teacher";
 import Image from "next/image";
 import { Metadata, ResolvingMetadata } from "next";
 import stripHTML from "@/utils/stripHTML";
+import CourseRequirements from "@/components/CourseRequirements";
 
 export async function generateStaticParams() {
   const courses = await getCursos();
@@ -36,14 +35,14 @@ export async function generateMetadata(
     openGraph: {
       images: [course.capa.url, ...previousImages],
       type: "article",
-      authors: course.professores.map(prof => prof.nome)
+      authors: course.professores.map((prof) => prof.nome),
     },
   };
 }
 
 export default async function Page({ params }: { params: { slug: string } }) {
   const course = await getCurso(params.slug);
-  const { capa, corpo, formatoDaAula, valor, professores } = course;
+  const { capa, corpo, professores } = course;
 
   return (
     <main className="container mx-auto px-5 my-[72px]">
@@ -60,7 +59,8 @@ export default async function Page({ params }: { params: { slug: string } }) {
               </div>
             </div>
             <div className="hidden md:block">
-              <CourseRequirements formatoDaAula={formatoDaAula} valor={valor} />
+              <CourseRequirements
+               curso={course} />
             </div>
           </div>
           <Image
@@ -86,38 +86,9 @@ export default async function Page({ params }: { params: { slug: string } }) {
           </div>
         </div>
         <div className="block md:hidden mt-11">
-          <CourseRequirements formatoDaAula={formatoDaAula} valor={valor} />
+          <CourseRequirements curso={course} />
         </div>
       </div>
     </main>
-  );
-}
-
-function CourseRequirements({
-  formatoDaAula,
-  valor,
-}: {
-  formatoDaAula?: string;
-  valor?: string;
-}) {
-  return (
-    <div className="uppercase font-azeret font-medium text-sm md:text-lg leading-6 flex flex-col whitespace-pre md:max-w-[450px]">
-      {formatoDaAula && (
-        <div>
-          <Separator />
-          <p className="my-4">{formatoDaAula}</p>
-        </div>
-      )}
-      {valor && (
-        <div>
-          <Separator />
-          <p className="my-4">{valor}</p>
-        </div>
-      )}
-      <Separator />
-      <div className="mt-4">
-        <LinkButton href={"/"}>Inscreva-se</LinkButton>
-      </div>
-    </div>
   );
 }
