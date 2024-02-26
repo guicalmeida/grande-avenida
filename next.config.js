@@ -3,8 +3,9 @@
 const isDevelopment = process.env.NODE_ENV === 'development' 
 
 const nextConfig = {
-  output: isDevelopment ? '' : "export",
+  output: isDevelopment ? 'standalone' : "export",
   images: {
+    unoptimized: !isDevelopment,
     remotePatterns: [
       {
         protocol: "https",
