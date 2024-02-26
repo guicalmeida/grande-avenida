@@ -7,9 +7,11 @@ import { useState } from "react";
 import ContactModal from "./ContactModal";
 
 export default function CourseRequirements({ curso }: { curso: Course }) {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(true);
   const { formatoDaAula, valor, statusDeInscricao, inicio } = curso;
   const isClosed = dayjs(inicio).isBefore(dayjs()) || !statusDeInscricao;
+
+  const statusString = isClosed ? "Demonstrar interesse" : "Inscreva-se"
   return (
     <>
       <div className="uppercase font-azeret font-medium text-sm md:text-lg leading-6 flex flex-col whitespace-pre md:max-w-[450px]">
@@ -36,11 +38,11 @@ export default function CourseRequirements({ curso }: { curso: Course }) {
               if (e.key === "Escape") setIsModalOpen(false);
             }}      
           >
-            {isClosed ? "Demonstrar interesse" : "Inscreva-se"}
+            {statusString}
           </button>
         </div>
       </div>
-      {isModalOpen && (<ContactModal setIsOpen={setIsModalOpen} pageTitle={curso.titulo} />)}
+      {isModalOpen && (<ContactModal setIsOpen={setIsModalOpen} pageTitle={curso.titulo}>{statusString}</ContactModal>)}
     </>
   );
 }
