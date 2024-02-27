@@ -51,6 +51,7 @@ export default function ContactModal({
             name="interesse"
             method="POST"
             data-netlify="true"
+            {...{ netlify: true }}
             encType="application/x-www-form-urlencoded"
           >
             <input type="hidden" name="form-name" value="interesse" />
