@@ -10,6 +10,7 @@ export type Course = {
   professores: Teacher[];
   statusDeInscricao: boolean;
   titulo: string;
+  linkDeInscricao: string;
   valor?: string;
   slug: string
 };

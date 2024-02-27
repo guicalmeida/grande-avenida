@@ -7,6 +7,7 @@ export function cursosQuery(courseSlug?: string) {
     query Cursos {
       ${courseSlug ? `curso(where: {slug: "${courseSlug}"})` : "cursos"} {
         slug
+        linkDeInscricao
         capa {
           id
           height
