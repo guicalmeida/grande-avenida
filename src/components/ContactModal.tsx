@@ -53,6 +53,7 @@ export default function ContactModal({
             data-netlify={true}
             encType="application/x-www-form-urlencoded"
           >
+            <input type="hidden" name="form-name" value="interesse" />
             <input
               className={inputStyling}
               name="nome"
