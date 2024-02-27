@@ -7,6 +7,7 @@ import Image from "next/image";
 import { Metadata, ResolvingMetadata } from "next";
 import stripHTML from "@/utils/stripHTML";
 import CourseRequirements from "@/components/CourseRequirements";
+import { Suspense } from "react";
 
 export async function generateStaticParams() {
   const courses = await getCursos();
@@ -55,12 +56,13 @@ export default async function Page({ params }: { params: { slug: string } }) {
               </span>
               <CourseHeader course={course} />
               <div className="hidden md:block">
-                <CourseInfoWithQParam course={course} />
+                <Suspense fallback={<p>parâmetros não disponíveis</p>}>
+                  <CourseInfoWithQParam course={course} />
+                </Suspense>
               </div>
             </div>
             <div className="hidden md:block">
-              <CourseRequirements
-               curso={course} />
+              <CourseRequirements curso={course} />
             </div>
           </div>
           <Image
@@ -71,7 +73,9 @@ export default async function Page({ params }: { params: { slug: string } }) {
             height={capa.height}
           />
           <div className="md:hidden block mt-3">
-            <CourseInfoWithQParam course={course} />
+            <Suspense fallback={<p>parâmetros não disponíveis</p>}>
+              <CourseInfoWithQParam course={course} />
+            </Suspense>
           </div>
         </div>
         <div className="md:w-[54%] flex flex-col ml-auto mt-12">
