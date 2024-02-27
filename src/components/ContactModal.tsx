@@ -50,7 +50,7 @@ export default function ContactModal({
             className="font-azeret flex flex-col gap-6 uppercase"
             name="interesse"
             method="POST"
-            data-netlify={true}
+            data-netlify="true"
             encType="application/x-www-form-urlencoded"
           >
             <input type="hidden" name="form-name" value="interesse" />
