@@ -14,9 +14,9 @@ export default function CourseInfo({
 }) {
   const { statusDeInscricao, inicio, fim, slug } = course;
 
-  const datesStr = `${dayjs(inicio).format("DD MMM")} - ${dayjs(fim).format(
+  const datesStr = (inicio && fim) ? `${dayjs(inicio).format("DD MMM")} - ${dayjs(fim).format(
     "DD MMM"
-  )}`;
+  )}` : 'Data a definir';
 
   const isPastCourse = dayjs(fim).isBefore(dayjs());
 
