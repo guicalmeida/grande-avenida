@@ -8,9 +8,9 @@ import HomeBalls from "@/components/HomeBalls";
 import { getHome } from "@/services/home";
 
 export default async function Home() {
-  const {blogs,carrosseis,cursos,galerias} = await getHome()
+  const { blogs, carrosseis, cursos, galerias } = await getHome();
   return (
-    <main className="container mx-auto px-3 md:px-5 my-[72px] ">
+    <main className="container mx-auto px-3 md:px-5 my-[72px] relative">
       <Header />
       <div className="mt-6 md:mt-14">
         <BigSlider slides={carrosseis} />
@@ -27,7 +27,9 @@ export default async function Home() {
       <div className="mt-[170px]">
         <HomeBlogSection posts={blogs} />
       </div>
-      <HomeBalls />
+      <div className="absolute top-0 left-0">
+        <HomeBalls />
+      </div>
     </main>
   );
 }
