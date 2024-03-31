@@ -5,7 +5,7 @@ import { BlogPost } from "@/models/blogPost.model";
 export function blogsQuery(blogSlug?: string) {
   return gql`
     query Blogs {
-        ${blogSlug ? `blog(where: {slug: "${blogSlug}"})` : "blogs"} {
+        ${blogSlug ? `blog(where: {slug: "${blogSlug}"})` : "blogs(orderBy: publishedAt_DESC)"} {
         autores {
           id
           nome

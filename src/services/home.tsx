@@ -4,7 +4,7 @@ import { Home } from "@/models/home.model";
 
 const homeQuery = gql`
   query Home {
-    blogs(orderBy: publishedAt_ASC) {
+    blogs(orderBy: publishedAt_DESC) {
       capa {
         height
         url(transformation: { document: { output: { format: webp } } })

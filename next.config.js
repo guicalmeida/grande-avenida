@@ -1,7 +1,8 @@
-/** @type {import('next').NextConfig} */
+// @ts-check
 
 const isDevelopment = process.env.NODE_ENV === 'development' 
 
+/** @type {import('next').NextConfig} */
 const nextConfig = {
   output: isDevelopment ? 'standalone' : "export",
   images: {
@@ -9,7 +10,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: process.env.MEDIA_URL,
+        hostname: process.env.MEDIA_URL ?? '',
       },
     ],
   },
@@ -20,4 +21,4 @@ const nextConfig = {
   },
 };
 
-module.exports = nextConfig;
+export default nextConfig
