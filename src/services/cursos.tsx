@@ -12,7 +12,7 @@ export function cursosQuery(courseSlug?: string) {
           id
           height
           width
-          url
+          url(transformation: {document: {output: {format: webp}}})
         }
         corpo {
           html
@@ -27,7 +27,7 @@ export function cursosQuery(courseSlug?: string) {
           nome
           perfil {
             id
-            url
+            url(transformation: {document: {output: {format: webp}}})
             width
             height
           }
@@ -44,13 +44,23 @@ export function cursosQuery(courseSlug?: string) {
 }
 
 export async function getCurso(courseSlug: string) {
-  const res = await graphqlClient.request<{ curso: Course }>(
-    cursosQuery(courseSlug)
-  );
+  const res = await new Promise((resolve) => {
+    setTimeout(() => {
+      resolve("");
+    }, 300);
+  }).then(() => {
+    console.count("entrou"); return graphqlClient.request<{ curso: Course }>(cursosQuery(courseSlug));
+  });
   return res.curso;
 }
 
 export async function getCursos() {
-  const res = await graphqlClient.request<{ cursos: Course[] }>(cursosQuery());
+  const res = await new Promise((resolve) => {
+    setTimeout(() => {
+      resolve("");
+    }, 300);
+  }).then(() => {
+    console.count("entrou"); return graphqlClient.request<{ cursos: Course[] }>(cursosQuery());
+  });
   return res.cursos;
 }

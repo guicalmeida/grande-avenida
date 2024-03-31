@@ -15,14 +15,14 @@ export function blogsQuery(blogSlug?: string) {
           perfil {
             id
             height
-            url
+            url(transformation: {document: {output: {format: webp}}})
             width
           }
         }
         capa {
           height
           id
-          url
+          url(transformation: {document: {output: {format: webp}}})
           width
         }
         corpo {
@@ -36,7 +36,7 @@ export function blogsQuery(blogSlug?: string) {
                 id
                 height
                 width
-                url
+                url(transformation: {document: {output: {format: webp}}})
               }
             }
             ... on Vazio {
@@ -63,13 +63,23 @@ export function blogsQuery(blogSlug?: string) {
 }
 
 export async function getBlog(blogSlug: string) {
-  const res = await graphqlClient.request<{ blog: BlogPost }>(
-    blogsQuery(blogSlug)
-  );
+  const res = await new Promise((resolve) => {
+    setTimeout(() => {
+      resolve("");
+    }, 300);
+  }).then(() => {
+    console.count("entrou"); return graphqlClient.request<{ blog: BlogPost }>(blogsQuery(blogSlug));
+  });
   return res.blog;
 }
 
 export async function getBlogs() {
-  const res = await graphqlClient.request<{ blogs: BlogPost[] }>(blogsQuery());
+  const res = await new Promise((resolve) => {
+    setTimeout(() => {
+      resolve("");
+    }, 300);
+  }).then(() => {
+    console.count("entrou"); return graphqlClient.request<{ blogs: BlogPost[] }>(blogsQuery());
+  });
   return res.blogs;
 }

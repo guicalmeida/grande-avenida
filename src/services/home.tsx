@@ -7,7 +7,7 @@ const homeQuery = gql`
     blogs(orderBy: publishedAt_ASC) {
       capa {
         height
-        url
+        url(transformation: { document: { output: { format: webp } } })
         width
         id
       }
@@ -21,7 +21,7 @@ const homeQuery = gql`
       capa {
         height
         id
-        url
+        url(transformation: { document: { output: { format: webp } } })
         width
       }
       titulo
@@ -32,7 +32,7 @@ const homeQuery = gql`
       imagem {
         height
         id
-        url
+        url(transformation: { document: { output: { format: webp } } })
         width
       }
       descricao
@@ -44,7 +44,7 @@ const homeQuery = gql`
         id
         height
         width
-        url
+        url(transformation: { document: { output: { format: webp } } })
       }
       url
     }
@@ -52,6 +52,12 @@ const homeQuery = gql`
 `;
 
 export async function getHome() {
-  const res = await graphqlClient.request<Home>(homeQuery);
+  const res = await new Promise((resolve) => {
+    setTimeout(() => {
+      resolve("");
+    }, 300);
+  }).then(() => {
+    console.count("entrou"); return graphqlClient.request<Home>(homeQuery);
+  });
   return res;
 }
