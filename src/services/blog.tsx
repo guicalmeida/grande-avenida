@@ -1,11 +1,16 @@
 import { gql } from "graphql-request";
 import graphqlClient from "./client";
 import { BlogPost } from "@/models/blogPost.model";
+import { avoidRateLimit } from "@/utils/avoidRateLimit";
 
 export function blogsQuery(blogSlug?: string) {
   return gql`
     query Blogs {
-        ${blogSlug ? `blog(where: {slug: "${blogSlug}"})` : "blogs(orderBy: publishedAt_DESC)"} {
+        ${
+          blogSlug
+            ? `blog(where: {slug: "${blogSlug}"})`
+            : "blogs(orderBy: publishedAt_DESC)"
+        } {
         autores {
           id
           nome
@@ -63,23 +68,17 @@ export function blogsQuery(blogSlug?: string) {
 }
 
 export async function getBlog(blogSlug: string) {
-  const res = await new Promise((resolve) => {
-    setTimeout(() => {
-      resolve("");
-    }, 300);
-  }).then(() => {
-    console.count("entrou"); return graphqlClient.request<{ blog: BlogPost }>(blogsQuery(blogSlug));
+  const res = await avoidRateLimit().then(() => {
+    console.count("entrou");
+    return graphqlClient.request<{ blog: BlogPost }>(blogsQuery(blogSlug));
   });
   return res.blog;
 }
 
 export async function getBlogs() {
-  const res = await new Promise((resolve) => {
-    setTimeout(() => {
-      resolve("");
-    }, 300);
-  }).then(() => {
-    console.count("entrou"); return graphqlClient.request<{ blogs: BlogPost[] }>(blogsQuery());
+  const res = await avoidRateLimit().then(() => {
+    console.count("entrou");
+    return graphqlClient.request<{ blogs: BlogPost[] }>(blogsQuery());
   });
   return res.blogs;
 }

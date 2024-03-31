@@ -1,6 +1,7 @@
 import { gql } from "graphql-request";
 import graphqlClient from "./client";
 import { Home } from "@/models/home.model";
+import { avoidRateLimit } from "@/utils/avoidRateLimit";
 
 const homeQuery = gql`
   query Home {
@@ -52,12 +53,9 @@ const homeQuery = gql`
 `;
 
 export async function getHome() {
-  const res = await new Promise((resolve) => {
-    setTimeout(() => {
-      resolve("");
-    }, 300);
-  }).then(() => {
-    console.count("entrou"); return graphqlClient.request<Home>(homeQuery);
+  const res = await avoidRateLimit().then(() => {
+    console.count("entrou");
+    return graphqlClient.request<Home>(homeQuery);
   });
   return res;
 }
